@@ -49,4 +49,4 @@ def main(page: ft.Page):
     
     # Construcción de la interfaz de usuario
     page.add(
-        ft.Text("Asistente
+        ft.Text('Asistente Valeria')
