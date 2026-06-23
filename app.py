@@ -47,6 +47,13 @@ def main(page: ft.Page):
     # Botón clásico sin incompatibilidades de íconos
     boton_enviar = ft.ElevatedButton("Enviar", on_click=enviar_mensaje)
     
-    # Construcción de la interfaz de usuario
+    # Construcción de la interfaz de usuario organizada
     page.add(
-        ft.Text('Asistente Valeria')
+        ft.Text('Asistente Valeria', size=24, weight=ft.FontWeight.BOLD),
+        chat_history,
+        ft.Row([user_input, boton_enviar])
+    )
+
+# Indicarle a Flet que arranque la aplicación en modo Web para Render
+if __name__ == "__main__":
+    ft.app(target=main)
