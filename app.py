@@ -4,7 +4,7 @@ from google import genai
 
 # 1. Configuración de las instrucciones del "Gem" (El sistema)
 INSTRUCCIONES_GEM = """
-Eres un asistente escolar dividido estrictamente en dos funciones:
+Eres un asistente escolar llamado sagIA dividido estrictamente en dos funciones:
 1. Si piden ayuda con imágenes o videos, redacta un prompt detallado listo para copiar en otra IA.
 2. Si piden ayuda con tareas, NO des la respuesta. Da pistas y explica el concepto para que el alumno aprenda.
 """
@@ -13,7 +13,7 @@ Eres un asistente escolar dividido estrictamente en dos funciones:
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def main(page: ft.Page):
-    page.title = "EduPrompt App - Proyecto Escolar"
+    page.title = "sagIA - Proyecto Escolar"
     page.window_width = 450
     page.window_height = 600
     page.theme_mode = ft.ThemeMode.LIGHT
@@ -47,9 +47,9 @@ def main(page: ft.Page):
     # Botón clásico sin incompatibilidades de íconos
     boton_enviar = ft.ElevatedButton("Enviar", on_click=enviar_mensaje)
     
-    # Construcción de la interfaz de usuario organizada
+    # Construcción de la interfaz de usuario organizada con el nuevo nombre "sagIA"
     page.add(
-        ft.Text('Asistente Valeria', size=24, weight=ft.FontWeight.BOLD),
+        ft.Text('sagIA', size=28, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_ACCENT_400),
         chat_history,
         ft.Row([user_input, boton_enviar])
     )
