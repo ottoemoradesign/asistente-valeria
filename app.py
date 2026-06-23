@@ -9,8 +9,8 @@ Eres un asistente escolar dividido estrictamente en dos funciones:
 2. Si piden ayuda con tareas, NO des la respuesta. Da pistas y explica el concepto para que el alumno aprenda.
 """
 
-# 2. Conexión con la API de Google
-client = genai.Client(api_key="AQ.Ab8RN6LRCXp-ztniSsSbs93WCqiiKW5XoLuFDdE8tDvKq5jTGQ")
+# 2. Conexión segura con la API de Google usando variables de entorno
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def main(page: ft.Page):
     page.title = "EduPrompt App - Proyecto Escolar"
@@ -54,6 +54,7 @@ def main(page: ft.Page):
         ft.Row([user_input, boton_enviar])
     )
 
-# Indicarle a Flet que arranque la aplicación en modo Web para Render
+# Indicarle a Flet que arranque la aplicación asignando el puerto correcto en Render
 if __name__ == "__main__":
-    ft.app(target=main)
+    port = int(os.getenv("PORT", 8550))
+    ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=port)
